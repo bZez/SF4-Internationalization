@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ lang }}">
 <head>
   <meta charset="UTF-8">
   <title>{% block title %}Welcome!{% endblock %}</title>
   {% block stylesheets %}{% endblock %}
 </head>
 <body>
-  {% trans from "messages" into ( _locale ) %}
+  {% trans from "messages" %}
   messages.goodmorning
   {% endtrans %}
-  <br><br>
+  <br>
+  <br>
   <a href="//france.symfony4.challenge"><button>France (fr-FR)</button></a>
   <a href="//belgique.symfony4.challenge"><button>Belgique (fr-BE)</button></a>
   <a href="//suisse.symfony4.challenge">  <button>Suisse (fr-CH)</button></a>
