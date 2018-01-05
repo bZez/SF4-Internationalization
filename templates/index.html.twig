@@ -3,34 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <title>{% block title %}Welcome!{% endblock %}</title>
-  {% block stylesheets %}{% endblock %}
+  {% block stylesheets %}
+  <link href="/css/main.css" rel="stylesheet">
+  {% endblock %}
 </head>
 <body>
+  <h1>
   {% trans from "messages" %}
   messages.goodmorning
   {% endtrans %}
+</h1>
   <br>
   <br>
-  <a href="//france.symfony4.challenge"><button>France (fr-FR)</button></a>
-  <a href="//belgique.symfony4.challenge"><button>Belgique (fr-BE)</button></a>
-  <a href="//suisse.symfony4.challenge">  <button>Suisse (fr-CH)</button></a>
-  <a href="//luxembourg.symfony4.challenge"><button>Luxembourg (fr-LU)</button></a><br>
-
-  <a href="//united-kingdom.symfony4.challenge"><button>UK (en-GB)</button></a>
-  <a href="//australia.symfony4.challenge"><button>Autralia (en-AU)</button></a>
-  <a href="//new-zealand.symfony4.challenge"><button>New-Zealand (en-NZ)</button></a>
-  <a href="//canada.symfony4.challenge">  <button>Canada (en-CA)</button></a>
-  <a href="//ireland.symfony4.challenge"><button>Ireland (en-IE)</button></a>
-  <a href="//united-states.symfony4.challenge"><button>USA (en-US)</button></a><br>
-
-  <a href="//deutschland.symfony4.challenge"><button>Deutschland (de-DE)</button></a>
-  <a href="//schweiz.symfony4.challenge"><button>Schweiz (de-CH)</button></a>
-  <a href="//osterreich.symfony4.challenge">  <button>Osterreich (de-AT)</button></a><br>
-
-  <a href="//nederland.symfony4.challenge"><button>Nederland (nl-NL)</button></a>
-  <a href="//belgie.symfony4.challenge"><button>Belgie (nl-BE)</button></a>
-
-
+  {% for country,code in countries %}
+  <a href="//{{country}}.symfony4.challenge"><button>{{country|upper}} ({{code}})</button></a>
+  {% endfor %}
   {% block body %}{% endblock %}
   {% block javascripts %}{% endblock %}
 </body>

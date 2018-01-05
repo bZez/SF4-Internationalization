@@ -19,81 +19,108 @@ class RequestListener
     $request = $event->getRequest();
     $url = $request->getHost();
     list($sub,$domain,$tld) = explode(".",$url);
-    switch($sub) {
-      case 'france':
-      $request->setLocale('fr');
-      $this->twig->addGlobal('lang','fr-FR');
-      break;
 
-      case 'belgique':
-      $request->setLocale('fr');
-      $this->twig->addGlobal('lang','fr-BE');
-      break;
+    //List avalaible countries
+    $countries = array(
+      'france' => 'fr-FR',
+      'belgique' => 'fr-BE',
+      'suisse' => 'fr-CH',
+      'luxembourg' => 'fr-LU',
+      'united-states' => 'en-US',
+      'united-kingdom' => 'en-GB',
+      'australia' => 'en-AU',
+      'new-zealand' => 'en-NZ',
+      'canada' => 'en-CA',
+      'ireland' => 'en-IE',
+      'deutschland' => 'de-DE',
+      'schweiz' => 'de-CH',
+      'osterreich' => 'de-AT',
+      'nederland' => 'nl-NL',
+      'belgie' => 'nl-BE');
 
-      case 'suisse':
-      $request->setLocale('fr');
-      $this->twig->addGlobal('lang','fr-CH');
-      break;
+      //Add countries to Twig
+      $this->twig->addGlobal('countries',$countries);
 
-      case 'luxembourg':
-      $request->setLocale('fr');
-      $this->twig->addGlobal('lang','fr-LU');
-      break;
+      //Switch language
+      switch($sub) {
+        case 'france':
+        $request->setLocale('fr');
+        $this->twig->addGlobal('lang','fr-FR');
+        break;
 
-      case 'united-states':
-      $request->setLocale('en');
-      $this->twig->addGlobal('lang','en-US');
-      break;
+        case 'belgique':
+        $request->setLocale('fr');
+        $this->twig->addGlobal('lang','fr-BE');
+        break;
 
-      case 'united-kingdom':
-      $request->setLocale('en');
-      $this->twig->addGlobal('lang','en-GB');
-      break;
+        case 'suisse':
+        $request->setLocale('fr');
+        $this->twig->addGlobal('lang','fr-CH');
+        break;
 
-      case 'australia':
-      $request->setLocale('en');
-      $this->twig->addGlobal('lang','en-AU');
-      break;
+        case 'luxembourg':
+        $request->setLocale('fr');
+        $this->twig->addGlobal('lang','fr-LU');
+        break;
 
-      case 'new-zealand':
-      $request->setLocale('en');
-      $this->twig->addGlobal('lang','en-NZ');
-      break;
+        case 'united-states':
+        $request->setLocale('en');
+        $this->twig->addGlobal('lang','en-US');
+        break;
 
-      case 'canada':
-      $request->setLocale('en');
-      $this->twig->addGlobal('lang','en-CA');
-      break;
+        case 'united-kingdom':
+        $request->setLocale('en');
+        $this->twig->addGlobal('lang','en-GB');
+        break;
 
-      case 'ireland':
-      $request->setLocale('en');
-      $this->twig->addGlobal('lang','en-IE');
-      break;
+        case 'australia':
+        $request->setLocale('en');
+        $this->twig->addGlobal('lang','en-AU');
+        break;
 
-      case 'deutschland':
-      $request->setLocale('de');
-      $this->twig->addGlobal('lang','de-DE');
-      break;
+        case 'new-zealand':
+        $request->setLocale('en');
+        $this->twig->addGlobal('lang','en-NZ');
+        break;
 
-      case 'schweiz':
-      $request->setLocale('de');
-      $this->twig->addGlobal('lang','de-CH');
-      break;
+        case 'canada':
+        $request->setLocale('en');
+        $this->twig->addGlobal('lang','en-CA');
+        break;
 
-      case 'osterreich':
-      $request->setLocale('de');
-      $this->twig->addGlobal('lang','de-AT');
-      break;
+        case 'ireland':
+        $request->setLocale('en');
+        $this->twig->addGlobal('lang','en-IE');
+        break;
 
-      case 'nederland':
-      $request->setLocale('de');
-      $this->twig->addGlobal('lang','nl-NL');
-      break;
+        case 'deutschland':
+        $request->setLocale('de');
+        $this->twig->addGlobal('lang','de-DE');
+        break;
 
-      case 'belgie':
-      $request->setLocale('de');
-      $this->twig->addGlobal('lang','nl-BE');
-      break;
+        case 'schweiz':
+        $request->setLocale('de');
+        $this->twig->addGlobal('lang','de-CH');
+        break;
+
+        case 'osterreich':
+        $request->setLocale('de');
+        $this->twig->addGlobal('lang','de-AT');
+        break;
+
+        case 'nederland':
+        $request->setLocale('de');
+        $this->twig->addGlobal('lang','nl-NL');
+        break;
+
+        case 'belgie':
+        $request->setLocale('de');
+        $this->twig->addGlobal('lang','nl-BE');
+        break;
+
+        default:
+        $request->setLocale('en');
+        $this->twig->addGlobal('lang','en-US');
+      }
     }
   }
-}
