@@ -2,9 +2,13 @@
 <html lang="{{ lang }}">
 <head>
   <meta charset="UTF-8">
-  <title>{% block title %}Welcome!{% endblock %}</title>
+  <meta keywords="{{ keywords }}">
+  <meta description="{{ desc }}">
+  <title>{% block title %}  {% trans from "messages" %}
+      messages.goodmorning
+      {% endtrans %}{% endblock %}</title>
   {% block stylesheets %}
-  <link href="/css/main.css" rel="stylesheet">
+<link href="css/main.css" rel="stylesheet">
   {% endblock %}
 </head>
 <body>
@@ -15,8 +19,8 @@
 </h1>
   <br>
   <br>
-  {% for country,code in countries %}
-  <a href="//{{country}}.symfony4.challenge"><button>{{country|upper}} ({{code}})</button></a>
+  {% for country in countries %}
+  <a href="//{{country.country}}.symfony4.challenge"><button>{{country.country|upper}}</button></a>
   {% endfor %}
   {% block body %}{% endblock %}
   {% block javascripts %}{% endblock %}

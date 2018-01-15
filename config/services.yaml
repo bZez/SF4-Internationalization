@@ -29,4 +29,4 @@ services:
     App\EventListener\RequestListener:
         tags:
             - { name: kernel.event_listener, event: kernel.request, priority: 25}
-        arguments: ['@twig']
+        arguments: ['@twig','@doctrine.orm.entity_manager']
